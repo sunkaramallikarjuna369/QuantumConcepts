@@ -73,72 +73,122 @@ function initBackToTop() {
     });
 }
 
-// Initialize all visualizations
-function initAllVisualizations() {
+// Visualization registry - maps container IDs to their init functions
+const visualizationRegistry = [];
+let initializedVisualizations = new Set();
+
+// Build registry of all visualizations
+function buildVisualizationRegistry() {
     // Hero animation
-    initHeroAnimation();
+    visualizationRegistry.push({ id: 'hero-animation', init: initHeroAnimation });
     
     // Foundational concepts
-    initWaveParticleDuality();
-    initSuperposition();
-    initQuantumStates();
-    initMeasurement();
-    initProbability();
-    initUncertainty();
-    initOperators();
-    initCommutators();
-    initEigenstates();
-    initEntanglement();
-    initQubits();
+    visualizationRegistry.push({ id: 'wave-particle-viz', init: initWaveParticleDuality });
+    visualizationRegistry.push({ id: 'superposition-viz', init: initSuperposition });
+    visualizationRegistry.push({ id: 'quantum-states-viz', init: initQuantumStates });
+    visualizationRegistry.push({ id: 'measurement-viz', init: initMeasurement });
+    visualizationRegistry.push({ id: 'probability-viz', init: initProbability });
+    visualizationRegistry.push({ id: 'uncertainty-viz', init: initUncertainty });
+    visualizationRegistry.push({ id: 'operators-viz', init: initOperators });
+    visualizationRegistry.push({ id: 'commutators-viz', init: initCommutators });
+    visualizationRegistry.push({ id: 'eigenstates-viz', init: initEigenstates });
+    visualizationRegistry.push({ id: 'entanglement-viz', init: initEntanglement });
+    visualizationRegistry.push({ id: 'qubits-viz', init: initQubits });
     
     // Mathematical foundations
-    initComplexNumbers();
-    initLinearAlgebra();
-    initHilbertSpace();
-    initTensorProducts();
-    initMatrices();
-    initQuantumGatesMath();
+    visualizationRegistry.push({ id: 'complex-numbers-viz', init: initComplexNumbers });
+    visualizationRegistry.push({ id: 'linear-algebra-viz', init: initLinearAlgebra });
+    visualizationRegistry.push({ id: 'hilbert-space-viz', init: initHilbertSpace });
+    visualizationRegistry.push({ id: 'tensor-products-viz', init: initTensorProducts });
+    visualizationRegistry.push({ id: 'matrices-viz', init: initMatrices });
+    visualizationRegistry.push({ id: 'quantum-gates-math-viz', init: initQuantumGatesMath });
     
     // Quantum mechanics core
-    initSchrodinger();
-    initHarmonicOscillator();
-    initTunneling();
-    initInterference();
-    initSpin();
-    initAngularMomentum();
+    visualizationRegistry.push({ id: 'schrodinger-viz', init: initSchrodinger });
+    visualizationRegistry.push({ id: 'harmonic-oscillator-viz', init: initHarmonicOscillator });
+    visualizationRegistry.push({ id: 'tunneling-viz', init: initTunneling });
+    visualizationRegistry.push({ id: 'interference-viz', init: initInterference });
+    visualizationRegistry.push({ id: 'spin-viz', init: initSpin });
+    visualizationRegistry.push({ id: 'angular-momentum-viz', init: initAngularMomentum });
     
-    // Quantum information
-    initMultiQubit();
-    initQuantumGates();
-    initQuantumCircuits();
-    initAlgorithms();
-    initParallelism();
-    initFourier();
-    initTeleportation();
-    initErrorCorrection();
-    initNoCloning();
+    // Quantum information (using placeholder functions)
+    visualizationRegistry.push({ id: 'multi-qubit-viz', init: () => createPlaceholderVisualization('multi-qubit-viz') });
+    visualizationRegistry.push({ id: 'quantum-gates-viz', init: () => createPlaceholderVisualization('quantum-gates-viz') });
+    visualizationRegistry.push({ id: 'quantum-circuits-viz', init: () => createPlaceholderVisualization('quantum-circuits-viz') });
+    visualizationRegistry.push({ id: 'algorithms-viz', init: () => createPlaceholderVisualization('algorithms-viz') });
+    visualizationRegistry.push({ id: 'parallelism-viz', init: () => createPlaceholderVisualization('parallelism-viz') });
+    visualizationRegistry.push({ id: 'fourier-viz', init: () => createPlaceholderVisualization('fourier-viz') });
+    visualizationRegistry.push({ id: 'teleportation-viz', init: () => createPlaceholderVisualization('teleportation-viz') });
+    visualizationRegistry.push({ id: 'error-correction-viz', init: () => createPlaceholderVisualization('error-correction-viz') });
+    visualizationRegistry.push({ id: 'no-cloning-viz', init: () => createPlaceholderVisualization('no-cloning-viz') });
     
     // Quantum cryptography
-    initQKD();
-    initBB84();
-    initPostQuantum();
-    initRandomness();
+    visualizationRegistry.push({ id: 'qkd-viz', init: () => createPlaceholderVisualization('qkd-viz') });
+    visualizationRegistry.push({ id: 'bb84-viz', init: () => createPlaceholderVisualization('bb84-viz') });
+    visualizationRegistry.push({ id: 'post-quantum-viz', init: () => createPlaceholderVisualization('post-quantum-viz') });
+    visualizationRegistry.push({ id: 'randomness-viz', init: () => createPlaceholderVisualization('randomness-viz') });
     
     // Advanced concepts
-    initDecoherence();
-    initNoise();
-    initDensityMatrices();
-    initQuantumChannels();
-    initPOVMs();
-    initSimulation();
-    initPhaseEstimation();
-    initSupremacy();
+    visualizationRegistry.push({ id: 'decoherence-viz', init: () => createPlaceholderVisualization('decoherence-viz') });
+    visualizationRegistry.push({ id: 'noise-viz', init: () => createPlaceholderVisualization('noise-viz') });
+    visualizationRegistry.push({ id: 'density-matrices-viz', init: () => createPlaceholderVisualization('density-matrices-viz') });
+    visualizationRegistry.push({ id: 'quantum-channels-viz', init: () => createPlaceholderVisualization('quantum-channels-viz') });
+    visualizationRegistry.push({ id: 'povms-viz', init: () => createPlaceholderVisualization('povms-viz') });
+    visualizationRegistry.push({ id: 'simulation-viz', init: () => createPlaceholderVisualization('simulation-viz') });
+    visualizationRegistry.push({ id: 'phase-estimation-viz', init: () => createPlaceholderVisualization('phase-estimation-viz') });
+    visualizationRegistry.push({ id: 'supremacy-viz', init: () => createPlaceholderVisualization('supremacy-viz') });
     
     // Technologies
-    initPhysicalQubits();
-    initAnnealing();
-    initHardware();
-    initQML();
+    visualizationRegistry.push({ id: 'physical-qubits-viz', init: () => createPlaceholderVisualization('physical-qubits-viz') });
+    visualizationRegistry.push({ id: 'annealing-viz', init: () => createPlaceholderVisualization('annealing-viz') });
+    visualizationRegistry.push({ id: 'hardware-viz', init: () => createPlaceholderVisualization('hardware-viz') });
+    visualizationRegistry.push({ id: 'qml-viz', init: () => createPlaceholderVisualization('qml-viz') });
+}
+
+// Initialize all visualizations with lazy loading
+function initAllVisualizations() {
+    // Build the registry of all visualizations
+    buildVisualizationRegistry();
+    
+    // Set up IntersectionObserver for lazy loading
+    const observerOptions = {
+        root: null,
+        rootMargin: '100px', // Start loading slightly before element comes into view
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const containerId = entry.target.id;
+                
+                // Only initialize once
+                if (!initializedVisualizations.has(containerId)) {
+                    const viz = visualizationRegistry.find(v => v.id === containerId);
+                    if (viz && viz.init) {
+                        try {
+                            viz.init();
+                            initializedVisualizations.add(containerId);
+                            console.log(`Initialized visualization: ${containerId}`);
+                        } catch (error) {
+                            console.error(`Error initializing ${containerId}:`, error);
+                        }
+                    }
+                }
+                
+                // Unobserve after initialization to save resources
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all visualization containers
+    visualizationRegistry.forEach(viz => {
+        const container = document.getElementById(viz.id);
+        if (container) {
+            observer.observe(container);
+        }
+    });
 }
 
 // Helper function to create a basic Three.js scene
@@ -165,7 +215,65 @@ function createScene(containerId) {
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
     
-    return { scene, camera, renderer, container };
+    // Store in global registries
+    scenes[containerId] = scene;
+    cameras[containerId] = camera;
+    renderers[containerId] = renderer;
+    
+    return { scene, camera, renderer, container, containerId };
+}
+
+// Placeholder visualization for concepts without custom animations
+function createPlaceholderVisualization(containerId) {
+    const setup = createScene(containerId);
+    if (!setup) return;
+    
+    const { scene, camera, renderer } = setup;
+    
+    // Create a rotating torus knot as placeholder
+    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 64, 8);
+    const material = new THREE.MeshPhongMaterial({
+        color: 0x6366f1,
+        emissive: 0x6366f1,
+        emissiveIntensity: 0.3
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+    
+    // Add orbiting particles
+    const particles = [];
+    for (let i = 0; i < 20; i++) {
+        const pGeometry = new THREE.SphereGeometry(0.05, 8, 8);
+        const pMaterial = new THREE.MeshPhongMaterial({
+            color: new THREE.Color().setHSL(i / 20, 1, 0.5)
+        });
+        const particle = new THREE.Mesh(pGeometry, pMaterial);
+        particle.userData = { angle: (i / 20) * Math.PI * 2, radius: 2 };
+        scene.add(particle);
+        particles.push(particle);
+    }
+    
+    let time = 0;
+    function animate() {
+        requestAnimationFrame(animate);
+        time += 0.02;
+        
+        mesh.rotation.x = time * 0.5;
+        mesh.rotation.y = time * 0.7;
+        
+        particles.forEach(p => {
+            p.userData.angle += 0.02;
+            const angle = p.userData.angle;
+            const radius = p.userData.radius;
+            
+            p.position.x = radius * Math.cos(angle);
+            p.position.y = Math.sin(angle * 3) * 0.5;
+            p.position.z = radius * Math.sin(angle);
+        });
+        
+        renderer.render(scene, camera);
+    }
+    animate();
 }
 
 // Hero Animation - Rotating quantum particles
@@ -1514,70 +1622,6 @@ function initAngularMomentum() {
     animate();
 }
 
-// Create placeholder functions for remaining concepts
-// These will have basic animations to demonstrate the concepts
-
-const placeholderVisualizations = [
-    'multi-qubit', 'quantum-gates', 'quantum-circuits', 'algorithms', 'parallelism',
-    'fourier', 'teleportation', 'error-correction', 'no-cloning', 'qkd', 'bb84',
-    'post-quantum', 'randomness', 'decoherence', 'noise', 'density-matrices',
-    'quantum-channels', 'povms', 'simulation', 'phase-estimation', 'supremacy',
-    'physical-qubits', 'annealing', 'hardware', 'qml'
-];
-
-placeholderVisualizations.forEach(name => {
-    window[`init${name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')}`] = function() {
-        const setup = createScene(`${name}-viz`);
-        if (!setup) return;
-        const { scene, camera, renderer } = setup;
-        
-        // Create a rotating torus as placeholder
-        const geometry = new THREE.TorusKnotGeometry(1, 0.3, 64, 8);
-        const material = new THREE.MeshPhongMaterial({
-            color: 0x6366f1,
-            emissive: 0x6366f1,
-            emissiveIntensity: 0.3
-        });
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-        
-        // Add particles
-        const particles = [];
-        for (let i = 0; i < 20; i++) {
-            const pGeometry = new THREE.SphereGeometry(0.05, 8, 8);
-            const pMaterial = new THREE.MeshPhongMaterial({
-                color: new THREE.Color().setHSL(i / 20, 1, 0.5)
-            });
-            const particle = new THREE.Mesh(pGeometry, pMaterial);
-            particle.userData = { angle: (i / 20) * Math.PI * 2, radius: 2 };
-            scene.add(particle);
-            particles.push(particle);
-        }
-        
-        let time = 0;
-        function animate() {
-            requestAnimationFrame(animate);
-            time += 0.02;
-            
-            mesh.rotation.x = time * 0.5;
-            mesh.rotation.y = time * 0.7;
-            
-            particles.forEach(p => {
-                p.userData.angle += 0.02;
-                const angle = p.userData.angle;
-                const radius = p.userData.radius;
-                
-                p.position.x = radius * Math.cos(angle);
-                p.position.y = Math.sin(angle * 3) * 0.5;
-                p.position.z = radius * Math.sin(angle);
-            });
-            
-            renderer.render(scene, camera);
-        }
-        animate();
-    };
-});
-
 // Handle window resize
 window.addEventListener('resize', () => {
     Object.keys(renderers).forEach(key => {
@@ -1593,4 +1637,4 @@ window.addEventListener('resize', () => {
     });
 });
 
-console.log('Quantum Concepts visualizations initialized!');
+console.log('Quantum Concepts visualizations initialized with lazy loading!');
