@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Concepts - Interactive 3D Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>⚛️ Quantum Concepts</h1>
+                <p>Interactive 3D Guide for Beginners</p>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Foundational Concepts</h3>
+                <a href="#wave-particle" class="nav-link">Wave-Particle Duality</a>
+                <a href="#superposition" class="nav-link">Superposition Principle</a>
+                <a href="#quantum-states" class="nav-link">Quantum States</a>
+                <a href="#measurement" class="nav-link">Quantum Measurement</a>
+                <a href="#probability" class="nav-link">Probability Amplitudes</a>
+                <a href="#uncertainty" class="nav-link">Uncertainty Principle</a>
+                <a href="#operators" class="nav-link">Quantum Operators</a>
+                <a href="#commutators" class="nav-link">Commutators</a>
+                <a href="#eigenstates" class="nav-link">Eigenstates & Eigenvalues</a>
+                <a href="#entanglement" class="nav-link">Quantum Entanglement</a>
+                <a href="#qubits" class="nav-link">Qubits vs Classical Bits</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Mathematical Foundations</h3>
+                <a href="#complex-numbers" class="nav-link">Complex Numbers</a>
+                <a href="#linear-algebra" class="nav-link">Linear Algebra Basics</a>
+                <a href="#hilbert-space" class="nav-link">Hilbert Space</a>
+                <a href="#tensor-products" class="nav-link">Tensor Products</a>
+                <a href="#matrices" class="nav-link">Unitary & Hermitian Matrices</a>
+                <a href="#quantum-gates-math" class="nav-link">Quantum Gates</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Quantum Mechanics Core</h3>
+                <a href="#schrodinger" class="nav-link">Schrödinger Equation</a>
+                <a href="#harmonic-oscillator" class="nav-link">Quantum Harmonic Oscillator</a>
+                <a href="#tunneling" class="nav-link">Quantum Tunneling</a>
+                <a href="#interference" class="nav-link">Quantum Interference</a>
+                <a href="#spin" class="nav-link">Spin & Pauli Matrices</a>
+                <a href="#angular-momentum" class="nav-link">Angular Momentum</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Quantum Information</h3>
+                <a href="#multi-qubit" class="nav-link">Multi-Qubit Systems</a>
+                <a href="#quantum-gates" class="nav-link">Quantum Gates</a>
+                <a href="#quantum-circuits" class="nav-link">Quantum Circuits</a>
+                <a href="#algorithms" class="nav-link">Quantum Algorithms</a>
+                <a href="#parallelism" class="nav-link">Quantum Parallelism</a>
+                <a href="#fourier" class="nav-link">Quantum Fourier Transform</a>
+                <a href="#teleportation" class="nav-link">Quantum Teleportation</a>
+                <a href="#error-correction" class="nav-link">Error Correction</a>
+                <a href="#no-cloning" class="nav-link">No-Cloning Theorem</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Quantum Cryptography</h3>
+                <a href="#qkd" class="nav-link">Quantum Key Distribution</a>
+                <a href="#bb84" class="nav-link">BB84 Protocol</a>
+                <a href="#post-quantum" class="nav-link">Post-Quantum Cryptography</a>
+                <a href="#randomness" class="nav-link">Quantum Randomness</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Advanced Concepts</h3>
+                <a href="#decoherence" class="nav-link">Quantum Decoherence</a>
+                <a href="#noise" class="nav-link">Quantum Noise</a>
+                <a href="#density-matrices" class="nav-link">Density Matrices</a>
+                <a href="#quantum-channels" class="nav-link">Quantum Channels</a>
+                <a href="#povms" class="nav-link">POVMs</a>
+                <a href="#simulation" class="nav-link">Quantum Simulation</a>
+                <a href="#phase-estimation" class="nav-link">Phase Estimation</a>
+                <a href="#supremacy" class="nav-link">Quantum Supremacy</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Technologies</h3>
+                <a href="#physical-qubits" class="nav-link">Physical Qubits</a>
+                <a href="#annealing" class="nav-link">Quantum Annealing</a>
+                <a href="#hardware" class="nav-link">Hardware vs Simulators</a>
+                <a href="#qml" class="nav-link">Quantum Machine Learning</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="hero">
+                <h1>Quantum Concepts</h1>
+                <p class="subtitle">An Interactive 3D Guide to Quantum Physics for Beginners</p>
+                <div class="hero-animation" id="hero-animation"></div>
+            </header>
+
+            <!-- Foundational Quantum Physics Concepts -->
+            <section id="wave-particle" class="concept-section">
+                <h2>Wave-Particle Duality</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Wave-particle duality is one of the most fundamental concepts in quantum mechanics. It states that every particle or quantum entity can be described as either a particle or a wave.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Light exhibits both wave-like properties (interference, diffraction) and particle-like properties (photoelectric effect)</li>
+                            <li>Matter particles like electrons also show wave-like behavior (electron diffraction)</li>
+                            <li>The de Broglie wavelength λ = h/p relates a particle's momentum to its wavelength</li>
+                            <li>This duality is not a contradiction but a fundamental property of quantum objects</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="wave-particle-viz"></div>
+                </div>
+            </section>
+
+            <section id="superposition" class="concept-section">
+                <h2>Superposition Principle</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Superposition is the ability of a quantum system to be in multiple states at the same time until it is measured.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>A quantum system can exist in a combination of multiple states simultaneously</li>
+                            <li>The famous Schrödinger's cat thought experiment illustrates this concept</li>
+                            <li>When measured, the system "collapses" to one definite state</li>
+                            <li>Mathematically: |ψ⟩ = α|0⟩ + β|1⟩ where |α|² + |β|² = 1</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="superposition-viz"></div>
+                </div>
+            </section>
+
+            <section id="quantum-states" class="concept-section">
+                <h2>Quantum States and State Vectors</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum states are represented using Dirac notation (bra-ket notation), which provides a convenient way to describe quantum systems.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li><strong>Ket:</strong> |ψ⟩ represents a quantum state vector</li>
+                            <li><strong>Bra:</strong> ⟨ψ| represents the dual vector (complex conjugate transpose)</li>
+                            <li><strong>Inner product:</strong> ⟨φ|ψ⟩ gives the probability amplitude</li>
+                            <li>States are normalized: ⟨ψ|ψ⟩ = 1</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="quantum-states-viz"></div>
+                </div>
+            </section>
+
+            <section id="measurement" class="concept-section">
+                <h2>Quantum Measurement and Wavefunction Collapse</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Measurement in quantum mechanics fundamentally changes the system being measured, causing the wavefunction to "collapse" to a definite state.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Before measurement: system exists in superposition of states</li>
+                            <li>During measurement: wavefunction collapses to one eigenstate</li>
+                            <li>After measurement: system is in a definite state</li>
+                            <li>The measurement problem is one of the deepest questions in quantum mechanics</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="measurement-viz"></div>
+                </div>
+            </section>
+
+            <section id="probability" class="concept-section">
+                <h2>Probability Amplitudes and Born Rule</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>The Born rule connects the mathematical formalism of quantum mechanics to experimental probabilities.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Probability amplitude: complex number α associated with each possible outcome</li>
+                            <li>Born rule: P = |α|² gives the probability of measuring that outcome</li>
+                            <li>Amplitudes can interfere (add or cancel), probabilities cannot</li>
+                            <li>This is why quantum mechanics is fundamentally probabilistic</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="probability-viz"></div>
+                </div>
+            </section>
+
+            <section id="uncertainty" class="concept-section">
+                <h2>Heisenberg Uncertainty Principle</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>The uncertainty principle states that certain pairs of physical properties cannot be simultaneously known to arbitrary precision.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Position-momentum: Δx · Δp ≥ ℏ/2</li>
+                            <li>Energy-time: ΔE · Δt ≥ ℏ/2</li>
+                            <li>This is not due to measurement limitations but a fundamental property of nature</li>
+                            <li>The more precisely one property is known, the less precisely the other can be known</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="uncertainty-viz"></div>
+                </div>
+            </section>
+
+            <section id="operators" class="concept-section">
+                <h2>Quantum Operators</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum operators are mathematical objects that represent physical observables and operations on quantum states.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li><strong>Observable:</strong> Physical quantity that can be measured (position, momentum, energy)</li>
+                            <li><strong>Hermitian operators:</strong> Operators representing observables (real eigenvalues)</li>
+                            <li>Operator acts on state: Â|ψ⟩ = |φ⟩</li>
+                            <li>Expectation value: ⟨Â⟩ = ⟨ψ|Â|ψ⟩</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="operators-viz"></div>
+                </div>
+            </section>
+
+            <section id="commutators" class="concept-section">
+                <h2>Commutators and Non-Commuting Observables</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>The commutator measures whether two operators can be simultaneously measured with arbitrary precision.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Commutator: [Â, B̂] = ÂB̂ - B̂Â</li>
+                            <li>If [Â, B̂] = 0: operators commute, can be measured simultaneously</li>
+                            <li>If [Â, B̂] ≠ 0: operators don't commute, uncertainty principle applies</li>
+                            <li>Example: [x̂, p̂] = iℏ (position and momentum don't commute)</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="commutators-viz"></div>
+                </div>
+            </section>
+
+            <section id="eigenstates" class="concept-section">
+                <h2>Eigenstates and Eigenvalues</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Eigenstates are special quantum states that remain unchanged (except for a scaling factor) when an operator acts on them.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Eigenvalue equation: Â|ψ⟩ = a|ψ⟩</li>
+                            <li>|ψ⟩ is the eigenstate, a is the eigenvalue</li>
+                            <li>Measuring an observable when the system is in an eigenstate always gives the same result</li>
+                            <li>Any quantum state can be written as a superposition of eigenstates</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="eigenstates-viz"></div>
+                </div>
+            </section>
+
+            <section id="entanglement" class="concept-section">
+                <h2>Quantum Entanglement</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum entanglement is a phenomenon where two or more particles become correlated in such a way that the quantum state of each particle cannot be described independently.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Einstein called it "spooky action at a distance"</li>
+                            <li>Measuring one entangled particle instantly affects the other, regardless of distance</li>
+                            <li>Bell states: maximally entangled two-qubit states</li>
+                            <li>Entanglement is a resource for quantum computing and quantum cryptography</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="entanglement-viz"></div>
+                </div>
+            </section>
+
+            <section id="qubits" class="concept-section">
+                <h2>Qubits vs Classical Bits</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>A qubit (quantum bit) is the basic unit of quantum information, analogous to a classical bit but with quantum properties.</p>
+                        <p><strong>Classical Bit:</strong></p>
+                        <ul>
+                            <li>Can be in state 0 or 1</li>
+                            <li>Definite state at all times</li>
+                            <li>No superposition or entanglement</li>
+                        </ul>
+                        <p><strong>Qubit:</strong></p>
+                        <ul>
+                            <li>Can be in superposition: |ψ⟩ = α|0⟩ + β|1⟩</li>
+                            <li>Can be entangled with other qubits</li>
+                            <li>Measurement collapses to 0 or 1</li>
+                            <li>Exponentially more powerful for certain computations</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="qubits-viz"></div>
+                </div>
+            </section>
+
+            <!-- Mathematical Foundations -->
+            <section id="complex-numbers" class="concept-section">
+                <h2>Complex Numbers and Vector Spaces</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Complex numbers are essential in quantum mechanics as quantum states are represented by complex-valued vectors.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Complex number: z = a + bi where i² = -1</li>
+                            <li>Magnitude: |z| = √(a² + b²)</li>
+                            <li>Complex conjugate: z* = a - bi</li>
+                            <li>Quantum amplitudes are complex numbers</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="complex-numbers-viz"></div>
+                </div>
+            </section>
+
+            <section id="linear-algebra" class="concept-section">
+                <h2>Linear Algebra Basics</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Linear algebra provides the mathematical framework for quantum mechanics.</p>
+                        <p><strong>Key Concepts:</strong></p>
+                        <ul>
+                            <li><strong>Vectors:</strong> Represent quantum states</li>
+                            <li><strong>Matrices:</strong> Represent quantum operations</li>
+                            <li><strong>Span:</strong> Set of all linear combinations of vectors</li>
+                            <li><strong>Basis:</strong> Set of linearly independent vectors that span the space</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="linear-algebra-viz"></div>
+                </div>
+            </section>
+
+            <section id="hilbert-space" class="concept-section">
+                <h2>Hilbert Space</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Hilbert space is the mathematical setting for quantum mechanics - a complete vector space with an inner product.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Quantum states are vectors in Hilbert space</li>
+                            <li>Inner product: ⟨φ|ψ⟩ gives probability amplitudes</li>
+                            <li>Completeness: every Cauchy sequence converges</li>
+                            <li>Can be finite or infinite dimensional</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="hilbert-space-viz"></div>
+                </div>
+            </section>
+
+            <section id="tensor-products" class="concept-section">
+                <h2>Tensor Products</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Tensor products allow us to describe composite quantum systems made of multiple subsystems.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Combines two vector spaces into a larger space</li>
+                            <li>Two-qubit state: |ψ⟩ ⊗ |φ⟩ or |ψφ⟩</li>
+                            <li>Dimension of product space: dim(H₁ ⊗ H₂) = dim(H₁) × dim(H₂)</li>
+                            <li>Essential for understanding multi-qubit systems</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="tensor-products-viz"></div>
+                </div>
+            </section>
+
+            <section id="matrices" class="concept-section">
+                <h2>Unitary and Hermitian Matrices</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Special types of matrices play crucial roles in quantum mechanics.</p>
+                        <p><strong>Hermitian Matrices:</strong></p>
+                        <ul>
+                            <li>Equal to their conjugate transpose: A† = A</li>
+                            <li>Represent observable quantities</li>
+                            <li>Have real eigenvalues</li>
+                        </ul>
+                        <p><strong>Unitary Matrices:</strong></p>
+                        <ul>
+                            <li>Satisfy U†U = I</li>
+                            <li>Represent quantum gates and time evolution</li>
+                            <li>Preserve inner products (probabilities)</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="matrices-viz"></div>
+                </div>
+            </section>
+
+            <section id="quantum-gates-math" class="concept-section">
+                <h2>Quantum Gates as Unitary Operations</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum gates are unitary operations that manipulate qubits, analogous to classical logic gates.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>All quantum gates are reversible (unitary)</li>
+                            <li>Single-qubit gates: Pauli-X, Y, Z, Hadamard, Phase gates</li>
+                            <li>Two-qubit gates: CNOT, SWAP, controlled gates</li>
+                            <li>Universal gate sets can implement any quantum computation</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="quantum-gates-math-viz"></div>
+                </div>
+            </section>
+
+            <!-- Quantum Mechanics Core Topics -->
+            <section id="schrodinger" class="concept-section">
+                <h2>Schrödinger Equation</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>The Schrödinger equation is the fundamental equation of quantum mechanics, describing how quantum states evolve over time.</p>
+                        <p><strong>Time-Dependent:</strong></p>
+                        <p>iℏ ∂|ψ⟩/∂t = Ĥ|ψ⟩</p>
+                        <p><strong>Time-Independent:</strong></p>
+                        <p>Ĥ|ψ⟩ = E|ψ⟩</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Ĥ is the Hamiltonian operator (total energy)</li>
+                            <li>Determines the time evolution of quantum states</li>
+                            <li>Solutions give energy levels and wavefunctions</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="schrodinger-viz"></div>
+                </div>
+            </section>
+
+            <section id="harmonic-oscillator" class="concept-section">
+                <h2>Quantum Harmonic Oscillator</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>The quantum harmonic oscillator is one of the most important model systems in quantum mechanics.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Models vibrating molecules, phonons, photons</li>
+                            <li>Energy levels: Eₙ = ℏω(n + 1/2)</li>
+                            <li>Equally spaced energy levels</li>
+                            <li>Zero-point energy: E₀ = ℏω/2</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="harmonic-oscillator-viz"></div>
+                </div>
+            </section>
+
+            <section id="tunneling" class="concept-section">
+                <h2>Quantum Tunneling</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum tunneling is a phenomenon where particles can pass through potential barriers that would be impossible to cross classically.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Particles have non-zero probability of being on the other side of a barrier</li>
+                            <li>Essential for nuclear fusion in stars</li>
+                            <li>Used in scanning tunneling microscopes</li>
+                            <li>Tunneling probability depends on barrier height and width</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="tunneling-viz"></div>
+                </div>
+            </section>
+
+            <section id="interference" class="concept-section">
+                <h2>Quantum Interference</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum interference occurs when probability amplitudes add or cancel, creating interference patterns.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Double-slit experiment demonstrates wave nature of particles</li>
+                            <li>Constructive interference: amplitudes add (bright fringes)</li>
+                            <li>Destructive interference: amplitudes cancel (dark fringes)</li>
+                            <li>Fundamental to quantum computing algorithms</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="interference-viz"></div>
+                </div>
+            </section>
+
+            <section id="spin" class="concept-section">
+                <h2>Spin and Pauli Matrices</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Spin is an intrinsic form of angular momentum carried by elementary particles.</p>
+                        <p><strong>Pauli Matrices:</strong></p>
+                        <ul>
+                            <li>σₓ (Pauli-X): bit flip</li>
+                            <li>σᵧ (Pauli-Y): bit and phase flip</li>
+                            <li>σᵤ (Pauli-Z): phase flip</li>
+                        </ul>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Spin-1/2 particles: electrons, protons, neutrons</li>
+                            <li>Spin states: |↑⟩ (spin up) and |↓⟩ (spin down)</li>
+                            <li>Forms the basis for qubit implementations</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="spin-viz"></div>
+                </div>
+            </section>
+
+            <section id="angular-momentum" class="concept-section">
+                <h2>Angular Momentum in Quantum Systems</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Angular momentum in quantum mechanics is quantized and described by specific quantum numbers.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Orbital angular momentum: L̂² and L̂ᵤ</li>
+                            <li>Quantum numbers: l (orbital) and m (magnetic)</li>
+                            <li>Commutation relations: [L̂ᵢ, L̂ⱼ] = iℏεᵢⱼₖL̂ₖ</li>
+                            <li>Important for atomic structure and spectroscopy</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="angular-momentum-viz"></div>
+                </div>
+            </section>
+
+            <!-- Quantum Information & Computation -->
+            <section id="multi-qubit" class="concept-section">
+                <h2>Multi-Qubit Systems</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Multi-qubit systems form the basis of quantum computing, with exponentially growing state spaces.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>n qubits: 2ⁿ dimensional Hilbert space</li>
+                            <li>General state: |ψ⟩ = Σ αᵢ|i⟩ where Σ|αᵢ|² = 1</li>
+                            <li>Entanglement creates correlations impossible classically</li>
+                            <li>Exponential scaling enables quantum advantage</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="multi-qubit-viz"></div>
+                </div>
+            </section>
+
+            <section id="quantum-gates" class="concept-section">
+                <h2>Quantum Gates</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum gates are the building blocks of quantum circuits, performing unitary operations on qubits.</p>
+                        <p><strong>Single-Qubit Gates:</strong></p>
+                        <ul>
+                            <li><strong>Hadamard (H):</strong> Creates superposition</li>
+                            <li><strong>Pauli-X:</strong> Quantum NOT gate</li>
+                            <li><strong>Pauli-Y, Z:</strong> Phase flips</li>
+                            <li><strong>Phase gates:</strong> S, T gates</li>
+                        </ul>
+                        <p><strong>Two-Qubit Gates:</strong></p>
+                        <ul>
+                            <li><strong>CNOT:</strong> Controlled-NOT, creates entanglement</li>
+                            <li><strong>SWAP:</strong> Exchanges two qubits</li>
+                            <li><strong>Controlled gates:</strong> CZ, CY, etc.</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="quantum-gates-viz"></div>
+                </div>
+            </section>
+
+            <section id="quantum-circuits" class="concept-section">
+                <h2>Quantum Circuits</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum circuits are sequences of quantum gates that implement quantum algorithms.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Read left to right (time flows left to right)</li>
+                            <li>Horizontal lines represent qubits</li>
+                            <li>Gates are represented by symbols on the lines</li>
+                            <li>Measurements shown by meter symbols</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="quantum-circuits-viz"></div>
+                </div>
+            </section>
+
+            <section id="algorithms" class="concept-section">
+                <h2>Quantum Algorithms</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum algorithms leverage quantum properties to solve problems faster than classical algorithms.</p>
+                        <p><strong>Major Algorithms:</strong></p>
+                        <ul>
+                            <li><strong>Grover's Algorithm:</strong> Unstructured search, O(√N) speedup</li>
+                            <li><strong>Shor's Algorithm:</strong> Integer factorization, exponential speedup</li>
+                            <li><strong>Deutsch-Jozsa:</strong> Determines if function is constant or balanced</li>
+                            <li><strong>Simon's Algorithm:</strong> Finds period of a function</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="algorithms-viz"></div>
+                </div>
+            </section>
+
+            <section id="parallelism" class="concept-section">
+                <h2>Quantum Parallelism</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum parallelism allows quantum computers to evaluate a function on multiple inputs simultaneously.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Superposition enables parallel evaluation</li>
+                            <li>Apply function to superposition: f(|0⟩ + |1⟩) = |f(0)⟩ + |f(1)⟩</li>
+                            <li>Challenge: extracting useful information from superposition</li>
+                            <li>Requires clever interference to get speedup</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="parallelism-viz"></div>
+                </div>
+            </section>
+
+            <section id="fourier" class="concept-section">
+                <h2>Quantum Fourier Transform</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>The Quantum Fourier Transform (QFT) is the quantum analogue of the discrete Fourier transform.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Transforms between computational and Fourier basis</li>
+                            <li>Exponentially faster than classical FFT</li>
+                            <li>Core component of Shor's algorithm</li>
+                            <li>Used in phase estimation</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="fourier-viz"></div>
+                </div>
+            </section>
+
+            <section id="teleportation" class="concept-section">
+                <h2>Quantum Teleportation</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum teleportation transfers a quantum state from one location to another using entanglement and classical communication.</p>
+                        <p><strong>Protocol Steps:</strong></p>
+                        <ul>
+                            <li>1. Create entangled pair shared between Alice and Bob</li>
+                            <li>2. Alice performs Bell measurement on her qubit and entangled qubit</li>
+                            <li>3. Alice sends classical bits to Bob</li>
+                            <li>4. Bob applies correction based on classical bits</li>
+                        </ul>
+                        <p><strong>Important:</strong> No faster-than-light communication (requires classical channel)</p>
+                    </div>
+                    <div class="visualization" id="teleportation-viz"></div>
+                </div>
+            </section>
+
+            <section id="error-correction" class="concept-section">
+                <h2>Quantum Error Correction</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum error correction protects quantum information from decoherence and errors.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Encodes logical qubits using multiple physical qubits</li>
+                            <li>Detects and corrects bit-flip and phase-flip errors</li>
+                            <li>Examples: Shor code (9 qubits), Steane code (7 qubits)</li>
+                            <li>Essential for fault-tolerant quantum computing</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="error-correction-viz"></div>
+                </div>
+            </section>
+
+            <section id="no-cloning" class="concept-section">
+                <h2>No-Cloning Theorem</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>The no-cloning theorem states that it is impossible to create an identical copy of an arbitrary unknown quantum state.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Cannot clone unknown quantum states</li>
+                            <li>Fundamental consequence of linearity of quantum mechanics</li>
+                            <li>Basis for quantum cryptography security</li>
+                            <li>Known states can be prepared multiple times</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="no-cloning-viz"></div>
+                </div>
+            </section>
+
+            <!-- Quantum Cryptography -->
+            <section id="qkd" class="concept-section">
+                <h2>Quantum Key Distribution</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum Key Distribution (QKD) uses quantum mechanics to securely distribute encryption keys.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Security based on laws of physics, not computational complexity</li>
+                            <li>Eavesdropping disturbs quantum states (detectable)</li>
+                            <li>Provides information-theoretic security</li>
+                            <li>Requires authenticated classical channel</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="qkd-viz"></div>
+                </div>
+            </section>
+
+            <section id="bb84" class="concept-section">
+                <h2>BB84 Protocol</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>BB84 is the first and most well-known quantum key distribution protocol.</p>
+                        <p><strong>Protocol Steps:</strong></p>
+                        <ul>
+                            <li>1. Alice sends qubits in random bases (rectilinear or diagonal)</li>
+                            <li>2. Bob measures in random bases</li>
+                            <li>3. Alice and Bob publicly compare bases (not values)</li>
+                            <li>4. Keep bits where bases matched</li>
+                            <li>5. Check subset for eavesdropping</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="bb84-viz"></div>
+                </div>
+            </section>
+
+            <section id="post-quantum" class="concept-section">
+                <h2>Post-Quantum Cryptography</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Post-quantum cryptography develops classical cryptographic systems secure against quantum computers.</p>
+                        <p><strong>Approaches:</strong></p>
+                        <ul>
+                            <li><strong>Lattice-based:</strong> Based on hard lattice problems</li>
+                            <li><strong>Code-based:</strong> Based on error-correcting codes</li>
+                            <li><strong>Multivariate:</strong> Based on multivariate polynomials</li>
+                            <li><strong>Hash-based:</strong> Based on hash functions</li>
+                        </ul>
+                        <p><strong>Difference from QKD:</strong> Post-quantum crypto uses classical systems resistant to quantum attacks, while QKD uses quantum mechanics for key distribution.</p>
+                    </div>
+                    <div class="visualization" id="post-quantum-viz"></div>
+                </div>
+            </section>
+
+            <section id="randomness" class="concept-section">
+                <h2>Quantum Randomness</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum mechanics provides true randomness, unlike classical pseudo-random number generators.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Measurement outcomes are fundamentally random</li>
+                            <li>Cannot be predicted even with complete information</li>
+                            <li>Used for cryptographic keys and simulations</li>
+                            <li>Quantum random number generators (QRNGs) commercially available</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="randomness-viz"></div>
+                </div>
+            </section>
+
+            <!-- Advanced Concepts -->
+            <section id="decoherence" class="concept-section">
+                <h2>Quantum Decoherence</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Decoherence is the loss of quantum coherence due to interaction with the environment.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Causes quantum systems to behave classically</li>
+                            <li>Main challenge for quantum computing</li>
+                            <li>Explains quantum-to-classical transition</li>
+                            <li>Timescales vary: nanoseconds to seconds</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="decoherence-viz"></div>
+                </div>
+            </section>
+
+            <section id="noise" class="concept-section">
+                <h2>Quantum Noise and Open Systems</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Open quantum systems interact with their environment, leading to noise and decoherence.</p>
+                        <p><strong>Types of Noise:</strong></p>
+                        <ul>
+                            <li><strong>Bit-flip:</strong> X error (|0⟩ ↔ |1⟩)</li>
+                            <li><strong>Phase-flip:</strong> Z error (phase change)</li>
+                            <li><strong>Depolarizing:</strong> Random Pauli error</li>
+                            <li><strong>Amplitude damping:</strong> Energy loss</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="noise-viz"></div>
+                </div>
+            </section>
+
+            <section id="density-matrices" class="concept-section">
+                <h2>Density Matrices and Mixed States</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Density matrices describe quantum systems that are in a statistical mixture of states.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Pure state: ρ = |ψ⟩⟨ψ| (Tr(ρ²) = 1)</li>
+                            <li>Mixed state: ρ = Σ pᵢ|ψᵢ⟩⟨ψᵢ| (Tr(ρ²) < 1)</li>
+                            <li>Describes statistical ensembles and open systems</li>
+                            <li>Expectation value: ⟨A⟩ = Tr(ρA)</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="density-matrices-viz"></div>
+                </div>
+            </section>
+
+            <section id="quantum-channels" class="concept-section">
+                <h2>Quantum Channels and Kraus Operators</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum channels describe how quantum states evolve under noise and decoherence.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Completely positive trace-preserving (CPTP) maps</li>
+                            <li>Kraus representation: ε(ρ) = Σ KᵢρKᵢ†</li>
+                            <li>Describes realistic quantum operations</li>
+                            <li>Examples: depolarizing, amplitude damping channels</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="quantum-channels-viz"></div>
+                </div>
+            </section>
+
+            <section id="povms" class="concept-section">
+                <h2>POVMs (Positive Operator-Valued Measures)</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>POVMs generalize quantum measurements beyond projective measurements.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Set of positive operators: {Eᵢ} where Σ Eᵢ = I</li>
+                            <li>Probability: P(i) = Tr(Eᵢρ)</li>
+                            <li>More general than von Neumann measurements</li>
+                            <li>Describes realistic measurement devices</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="povms-viz"></div>
+                </div>
+            </section>
+
+            <section id="simulation" class="concept-section">
+                <h2>Quantum Simulation</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum simulation uses quantum computers to simulate other quantum systems.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Feynman's original motivation for quantum computing</li>
+                            <li>Simulates molecules, materials, high-energy physics</li>
+                            <li>Analog vs digital quantum simulation</li>
+                            <li>Near-term application for NISQ devices</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="simulation-viz"></div>
+                </div>
+            </section>
+
+            <section id="phase-estimation" class="concept-section">
+                <h2>Quantum Phase Estimation</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Phase estimation is a quantum algorithm that estimates the eigenvalue (phase) of a unitary operator.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Given U|ψ⟩ = e^(2πiφ)|ψ⟩, estimates φ</li>
+                            <li>Uses QFT and controlled-U operations</li>
+                            <li>Core subroutine in many quantum algorithms</li>
+                            <li>Applications: chemistry, optimization, machine learning</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="phase-estimation-viz"></div>
+                </div>
+            </section>
+
+            <section id="supremacy" class="concept-section">
+                <h2>Quantum Supremacy</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum supremacy (or quantum advantage) is the demonstration that a quantum computer can solve a problem that classical computers practically cannot.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Google's 2019 demonstration with Sycamore processor</li>
+                            <li>Random circuit sampling in 200 seconds vs 10,000 years classically</li>
+                            <li>Debate about practical vs theoretical supremacy</li>
+                            <li>Milestone toward practical quantum computing</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="supremacy-viz"></div>
+                </div>
+            </section>
+
+            <!-- Technologies -->
+            <section id="physical-qubits" class="concept-section">
+                <h2>Physical Realization of Qubits</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Different physical systems can be used to implement qubits, each with advantages and challenges.</p>
+                        <p><strong>Implementations:</strong></p>
+                        <ul>
+                            <li><strong>Superconducting:</strong> Josephson junctions (IBM, Google, Rigetti)</li>
+                            <li><strong>Ion trap:</strong> Trapped ions (IonQ, Honeywell)</li>
+                            <li><strong>Photonic:</strong> Photons in optical circuits (Xanadu, PsiQuantum)</li>
+                            <li><strong>Topological:</strong> Anyons and Majorana fermions (Microsoft)</li>
+                            <li><strong>Neutral atoms:</strong> Rydberg atoms (QuEra, Pasqal)</li>
+                            <li><strong>Quantum dots:</strong> Electron spins in semiconductors (Intel)</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="physical-qubits-viz"></div>
+                </div>
+            </section>
+
+            <section id="annealing" class="concept-section">
+                <h2>Quantum Annealing</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum annealing is a quantum optimization technique that finds the global minimum of a function.</p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Adiabatic quantum computation</li>
+                            <li>Starts in ground state of simple Hamiltonian</li>
+                            <li>Slowly evolves to problem Hamiltonian</li>
+                            <li>D-Wave systems use quantum annealing</li>
+                            <li>Applications: optimization, machine learning, sampling</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="annealing-viz"></div>
+                </div>
+            </section>
+
+            <section id="hardware" class="concept-section">
+                <h2>Quantum Hardware vs Simulators</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum computing can be explored through real hardware or classical simulators.</p>
+                        <p><strong>Real Quantum Hardware:</strong></p>
+                        <ul>
+                            <li>IBM Quantum, Google Quantum AI, Amazon Braket</li>
+                            <li>Limited qubits (50-1000 currently)</li>
+                            <li>Subject to noise and decoherence</li>
+                            <li>NISQ era: Noisy Intermediate-Scale Quantum</li>
+                        </ul>
+                        <p><strong>Classical Simulators:</strong></p>
+                        <ul>
+                            <li>Qiskit, Cirq, Q#, PennyLane</li>
+                            <li>Exact simulation limited to ~30-50 qubits</li>
+                            <li>Useful for algorithm development and testing</li>
+                            <li>Can simulate noise models</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="hardware-viz"></div>
+                </div>
+            </section>
+
+            <section id="qml" class="concept-section">
+                <h2>Quantum Machine Learning</h2>
+                <div class="concept-content">
+                    <div class="description">
+                        <p>Quantum Machine Learning (QML) combines quantum computing with machine learning techniques.</p>
+                        <p><strong>Key Concepts:</strong></p>
+                        <ul>
+                            <li><strong>Quantum data encoding:</strong> Amplitude, basis, angle encoding</li>
+                            <li><strong>Variational circuits:</strong> Parameterized quantum circuits</li>
+                            <li><strong>Quantum classifiers:</strong> QNN, QSVM</li>
+                            <li><strong>Applications:</strong> Pattern recognition, optimization, generative models</li>
+                        </ul>
+                        <p><strong>Potential Advantages:</strong></p>
+                        <ul>
+                            <li>Quantum kernel methods</li>
+                            <li>Exponential speedup for certain problems</li>
+                            <li>Quantum feature spaces</li>
+                        </ul>
+                    </div>
+                    <div class="visualization" id="qml-viz"></div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>Created with ❤️ for quantum physics enthusiasts</p>
+                <p>Interactive 3D visualizations powered by Three.js</p>
+            </footer>
+        </main>
+    </div>
+
+    <button id="back-to-top" class="back-to-top">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
